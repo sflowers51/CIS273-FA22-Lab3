@@ -9,6 +9,7 @@ namespace StringUtilities
             string s = "Lou is reallll cool.";
 
             bool unique = s.IsUniqueCharacterSet();
+
         }
     }
 }
