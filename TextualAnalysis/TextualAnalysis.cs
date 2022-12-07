@@ -36,7 +36,7 @@ namespace TextualAnalysis
                 if (stopwords.Contains(word))
                 {
                     //skip the stop word
-                    ignoreStopWords = true;
+                    wordCounts[word] = 0;
                 }
                 //else
                 if (wordCounts.ContainsKey(word) == false)
@@ -44,11 +44,10 @@ namespace TextualAnalysis
                     //either add word if new with count of one
                     wordCounts[word] = 1;
                 }
-                else
-                {
-                    //or increment the word count if it's already in the dictionary
-                    wordCounts[word]++;
-                }
+
+                //or increment the word count if it's already in the dictionary
+                wordCounts[word]++;
+
 
             }
 
