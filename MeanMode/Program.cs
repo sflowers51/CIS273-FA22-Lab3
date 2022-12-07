@@ -45,6 +45,7 @@ namespace MeanMode
                 {
                     modes[item]++;
                 }
+
                 modes[item] = 1;
             }
 
