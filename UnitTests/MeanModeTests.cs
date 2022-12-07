@@ -83,7 +83,7 @@ namespace UnitTests
         [TestMethod]
         public void MeanMode7()
         {
-            int[] numbers = new int[901];
+            int[] numbers = new int[900];
             for (int i = 0; i < numbers.Length; i++)
             {
                 numbers[i] = 2;

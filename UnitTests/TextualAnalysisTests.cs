@@ -141,6 +141,6 @@ namespace UnitTests
             Assert.AreEqual(8, result.GetValueOrDefault("valar"));
         }
         #endregion
-        //C:/Users/ses10/Desktop/School/Data Structures - Grading/Data/stop-words.txt
+        public static string stopWordFilePath = "../../../Data/stop-words.txt";
     }
 }

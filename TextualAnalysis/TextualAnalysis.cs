@@ -30,12 +30,27 @@ namespace TextualAnalysis
             string[] stopwords = GetStopWordsFromFile(stopWordFilePath);
 
             //foreach word do somethin
+            foreach(var word in words)
+            {
                 //if not ignoring stop words and word is  stop word
-                //skip the stop word
+                if (stopwords.Contains(word))
+                {
+                    //skip the stop word
+                    ignoreStopWords = true;
+                }
                 //else
-                //either add word if new with count of one
-                //or increment the word count if it's already in the dictionary
+                if (wordCounts.ContainsKey(word) == false)
+                {
+                    //either add word if new with count of one
+                    wordCounts[word] = 1;
+                }
+                else
+                {
+                    //or increment the word count if it's already in the dictionary
+                    wordCounts[word]++;
+                }
 
+            }
 
             return wordCounts;
         }
@@ -47,10 +62,10 @@ namespace TextualAnalysis
             string text = System.IO.File.ReadAllText(path);
 
             // call the other method
+            var result = ComputeWordFrequencies(text);
 
             // return the result of the other method
-
-            return null;
+            return result;
         }
 
         private static string[] GetStopWordsFromFile(string path)
