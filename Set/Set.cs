@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Markup;
 
 namespace Set
 {
@@ -10,28 +12,26 @@ namespace Set
 
         public Set()
         {
-            hashSet = new HashSet<T>(); 
+            hashSet = new HashSet<T>();
         }
 
-        public int Size => throw new NotImplementedException();
+        public int Size => hashSet.Count;
 
         public List<T> Elements
         {
             get
             {
-                // do work
-
-                //return result
-                return null;
+                
+                return Elements;
             }
         }
             
-
+        
         public void Add(ISet<T> s)
         {
             foreach(var item in s)
             {
-                this.Add(item);
+                hashSet.Add(item);
             }
         }
 
@@ -42,7 +42,14 @@ namespace Set
 
         public bool Contains(T value)
         {
-            throw new NotImplementedException();
+            foreach(var item in hashSet)
+            {
+                if(item.Equals(value))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -57,7 +64,13 @@ namespace Set
 
         public void Remove(T value)
         {
-            throw new NotImplementedException();
+            foreach(var item in hashSet)
+            {
+                if (value.Equals(item))
+                {
+                    hashSet.Remove(item);
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -65,14 +78,15 @@ namespace Set
             return GetEnumerator();
         }
 
-        public static Set<T> Union(Set<T> set1, Set<T> set2)
+        public static Set<T> Union(ISet<T> set1, ISet<T> set2)
         {
             return null;
         }
 
-        public static Set<T> Intersection(Set<T> set1, Set<T> set2)
+        public static Set<T> Intersection(ISet<T> set1, ISet<T> set2)
         {
-
+            throw new NotImplementedException();
         }
+
     }
 }
