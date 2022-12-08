@@ -10,7 +10,6 @@ namespace UnitTests
         //Textual Analysis
         #region
         //Test stop words
-
         [TestMethod]
         public void TextualAnalysis1a()
         {
@@ -142,7 +141,6 @@ namespace UnitTests
             Assert.AreEqual(8, result.GetValueOrDefault("valar"));
         }
         #endregion
-
-        public static string stopWordFilePath = "../../../Data/stop-words.txt";
+        //C:/Users/ses10/Desktop/School/Data Structures - Grading/Data/stop-words.txt
     }
 }

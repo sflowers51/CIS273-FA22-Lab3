@@ -8,7 +8,7 @@ namespace TextualAnalysis
 {
     public class TextualAnalysis
     {
-        public static string stopWordFilePath = "../../../Data/test.txt";
+        public static string stopWordFilePath = "../../../Data/stop-words.txt";
 
         public TextualAnalysis()
         {
@@ -33,20 +33,24 @@ namespace TextualAnalysis
             foreach(var word in words)
             {
                 //if not ignoring stop words and word is  stop word
-                if (stopwords.Contains(word))
+                if (ignoreStopWords = false & stopwords.Contains(word))
                 {
                     //skip the stop word
-                    wordCounts[word] = 0;
-                }
-                //else
-                if (wordCounts.ContainsKey(word) == false)
-                {
-                    //either add word if new with count of one
-                    wordCounts[word] = 1;
+                    wordCounts.Add(word, 0 );
                 }
 
-                //or increment the word count if it's already in the dictionary
-                wordCounts[word]++;
+                else
+                {
+                    //else
+                    if (wordCounts.ContainsKey(word))
+                    {
+                        //or increment the word count if it's already in the dictionary
+                        wordCounts[word] = wordCounts[word] + 1 ;
+                    }
+
+                    //either add word if new with count of one
+                    wordCounts.Add(word, 1);
+                }
 
 
             }
@@ -61,7 +65,7 @@ namespace TextualAnalysis
             string text = System.IO.File.ReadAllText(path);
 
             // call the other method
-            var result = ComputeWordFrequencies(text);
+            Dictionary<string, int> result = ComputeWordFrequencies(text);
 
             // return the result of the other method
             return result;
